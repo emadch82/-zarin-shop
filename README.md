@@ -1,20 +1,158 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 🛒 زرین‌بوم — فروشگاه اینترنتی زرین‌کالا
 
-# Run and deploy your AI Studio app
+> **Zarin Digital Store** — یک فروشگاه اینترنتی کامل و حرفه‌ای به زبان فارسی، ساخته شده با React + TypeScript + TailwindCSS
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/f782a6d7-fe7f-4417-8fbd-80a53cc6a350
+## ✨ ویژگی‌ها
 
-## Run Locally
+### 👤 کاربران
+- **ثبت‌نام و ورود** با نام کاربری و رمز عبور
+- **ورود با گوگل** (Google OAuth 2.0) — واقعی با `@react-oauth/google`
+- **ورود مهمان** بدون نیاز به ثبت‌نام
+- **پروفایل کاربری** با قابلیت آپلود آواتار (drag & drop)
+- **پنل مدیریت سبد خرید** با تخفیف و کوپن
+- **کیف پول** با شارژ و تاریخچه تراکنش‌ها
+- **علاقه‌مندی‌ها** (Wishlist)
+- **تاریخچه سفارش‌ها** با وضعیت‌های مختلف
+- **فراموشی رمز عبور** با OTP شبیه‌سازیشده
 
-**Prerequisites:**  Node.js
+### 🛍 فروشگاه
+- **ویترین محصولات** با جستجو، فیلتر دسته‌بندی، فیلتر برند، قیمت
+- **تصاویر محصولات** با اسلایدشو اتوماتیک و گالری
+- **مشخصات فنی، تگ‌ها، نظرات کاربران**
+- **۶۰+ محصول** در دسته‌بندی‌های مختلف
+- **تخفیف‌ها** و نمایش قیمت ویژه
 
+### 🛒 سبد خرید و پرداخت
+- **سبد خرید** با انیمیشن fly-to-cart
+- **کوپن تخفیف** (WELCOME=10%, ZARIN=15%, YALDA=30%)
+- **تسویه حساب چندمرحله‌ای** (اطلاعات گیرنده → آدرس → پرداخت)
+- **سه روش پرداخت:** درگاه بانکی شبیه‌سازیشده / کیف پول / پرداخت در محل
+- **درگاه بانکی شبیه‌سازیشده** با شماره کارت، CVV2، تاریخ انقضا، کپچا، OTP
+- **رسید سفارش** با کد رهگیری
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 👨‍💼 پنل مدیریت
+- **داشبورد** با نمودار فروش ماهانه، آمار، هشدار موجودی کم
+- **مدیریت محصولات** — افزودن/ویرایش/حذف با فرم کامل (تصاویر، مشخصات، تگ‌ها)
+- **مدیریت دسته‌بندی‌ها و برندها**
+- **مدیریت سفارش‌ها** — تغییر وضعیت، ویرایش کد رهگیری
+- **مدیریت کاربران** — جستجو، تعلیق، تغییر نقش، تنظیم کیف پول
+- **مدیریت کوپن‌ها**
+- **مدیریت نظرات و پاسخ به آنها**
+- **سیستم پیام‌رسان** — ارسال نوتیفیکیشن به کاربران
+
+### 💬 چت Real-Time
+- **ارتباط مستقیم کاربر با ادمین** از طریق WebSocket
+- **تاریخچه چت** هنگام اتصال مجدد
+- **پنل ادمین:** مشاهده همه کاربران و پاسخ به آنها
+- **نوتیفیکیشن مرورگر** (Notification API) برای پیام‌های جدید
+- **انتخاب:** ادامه گفتگوی قبلی یا شروع گفتگوی جدید
+
+### 🎨 ظاهر
+- **حالت تاریک/روشن** با ذخیره در localStorage
+- **راست‌چین کامل** (RTL) با پشتیبانی از اعداد فارسی
+- **واکنش‌گرا** (موبایل/تبلت/دسکتاپ)
+- **انیمیشن‌های حرفه‌ای** با `motion/react` (Framer Motion)
+- **آیکون‌های Lucide**
+- **صداهای تعاملی** با Web Audio API
+
+---
+
+## 🧱 تکنولوژی‌ها
+
+| بخش | تکنولوژی |
+|------|-----------|
+| **فرانت‌اند** | React 18 + TypeScript + Vite |
+| **استایل** | TailwindCSS v4 |
+| **انیمیشن** | motion/react |
+| **آیکون** | lucide-react |
+| **Google OAuth** | @react-oauth/google + jwt-decode |
+| **بک‌اند** | Node.js + Express 5 + ws (WebSocket) |
+| **دیتابیس** | درون‌حافظه‌ای (in-memory Map) |
+| **محصولات اولیه** | ۱۳ محصول seed شده |
+
+---
+
+## 📁 ساختار پروژه
+
+```
+├── .env                 # تنظیمات (Google Client ID و ...)
+├── .gitignore
+├── index.html           # ورودی SPA
+├── package.json
+├── vite.config.ts       # کانفیگ Vite (پروکسی بک‌اند)
+├── tsconfig.json
+├── server.js            # بک‌اند Node.js (Express + ws)
+├── clean-categories.js  # اسکریپت پاک‌سازی دسته‌بندی‌ها
+├── src/
+│   ├── main.tsx         # نقطه شروع + GoogleOAuthProvider
+│   ├── App.tsx          # کل اپلیکیشن (تک‌فایل ۱۰۰۰۰+ خط)
+│   ├── index.css        # استایل‌های Tailwind + سفارشی
+│   └── vite-env.d.ts
+├── public/
+│   ├── robots.txt
+│   └── sitemap.xml
+└── dist/                # خروجی build
+```
+
+---
+
+## 🚀 اجرای پروژه
+
+```bash
+# نصب وابستگی‌ها
+npm install
+
+# اجرای بک‌اند (پورت ۸۰۰۵)
+npm start
+
+# یا اجرای همزمان بک‌اند + فرانت‌اند توسعه
+# ترمینال ۱:
+npm start
+# ترمینال ۲:
+npm run dev
+```
+
+### فعال‌سازی ورود با گوگل (اختیاری)
+
+۱. به [Google Cloud Console](https://console.cloud.google.com/apis/credentials) بروید
+۲. یک پروژه جدید بسازید → OAuth consent screen → External
+۳. Credentials → Create Credentials → OAuth client ID → Web application
+۴. Authorized JavaScript origins را تنظیم کنید:
+   - `http://localhost:3000`
+   - `http://localhost:8005`
+۵. Client ID را در فایل `.env` قرار دهید:
+   ```
+   VITE_GOOGLE_CLIENT_ID=123456789-xxxxx.apps.googleusercontent.com
+   ```
+۶. سرور را ری‌استارت کنید
+
+### ساخت نسخه نهایی
+
+```bash
+npm run build
+npm start   # سرو فایل‌های build شده روی پورت ۸۰۰۵
+```
+
+---
+
+## 🧠 معماری
+
+- **تک‌فایل SPA** — کل اپلیکیشن در `App.tsx` (۱۰۸۰۰+ خط) بدون React Router، با state-driven tab navigation
+- **داده‌ها در localStorage** — کاربران، محصولات، سفارش‌ها، سبد خرید، کیف پول، علاقه‌مندی‌ها
+- **WebSocket Real-Time** — ارتباط چت کاربر↔ادمین از طریق WebSocket روی بک‌اند Express
+- **بک‌اند یکپارچه** — `server.js` هم فایل‌های استاتیک (dist/) رو سرو می‌کنه هم WebSocket هندل می‌کنه
+- **پروکسی توسعه** — Vite در حالت dev درخواست‌های `/ws` و `/api` و `/health` رو به بک‌اند فوروارد می‌کنه
+
+---
+
+## 🧪 اکانت‌های پیش‌فرض
+
+| نقش | نام کاربری | رمز عبور |
+|-----|-----------|---------|
+| **مدیر** | `admin` | `admin` |
+| **کاربر** | (خودت ثبت‌نام کن) | — |
+
+---
+

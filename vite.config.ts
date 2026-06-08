@@ -1,0 +1,22 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    react()
+  ],
+  server: {
+    port: 3000,
+    host: true,
+    proxy: {
+      "/ws": {
+        target: "ws://localhost:8005",
+        ws: true
+      },
+      "/api": "http://localhost:8005",
+      "/health": "http://localhost:8005"
+    }
+  }
+});

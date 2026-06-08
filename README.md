@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="public/banner.png" alt="زرین‌بوم" width="100%" style="max-width: 900px; border-radius: 16px;" />
+</div>
+
 # 🛒 زرین‌بوم — فروشگاه اینترنتی زرین‌کالا
 
 > **Zarin Digital Store** — یک فروشگاه اینترنتی کامل و حرفه‌ای به زبان فارسی، ساخته شده با React + TypeScript + TailwindCSS
